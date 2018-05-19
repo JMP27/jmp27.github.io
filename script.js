@@ -111,9 +111,7 @@ $(document).ready(function() {
     var requestUrl = apiRoot + 'tasks';
 
     $.ajax({
-      url: requestUrl + '/?' + $.param({
-        taskId: taskId
-      }),
+      url: requestUrl + '/' + taskId,
       method: 'DELETE',
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
@@ -168,7 +166,7 @@ $(document).ready(function() {
   }
 
   function handleCardCreationRequest(event) {
-    var requestUrl = trelloApiRoot + 'cards';
+    var requestUrl = trelloApiRoot + 'card';
     var $relatedTaskRow = $(event.target).parents('[data-task-id]');
     var relatedTaskId = $relatedTaskRow.attr('data-task-id');
     var relatedTask = availableTasks[relatedTaskId];
